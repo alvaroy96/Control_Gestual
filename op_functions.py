@@ -137,15 +137,31 @@ def checkPose():
     r_elbow = get_body_kp("RElbow")
     r_shoulder = get_body_kp("RShoulder")
 
-    vert_angle_right_forearm = vertical_angle(r_wrist, r_elbow)
     vert_angle_right_arm = vertical_angle(r_elbow, r_shoulder)
+    vert_angle_right_forearm = vertical_angle(r_wrist, r_elbow)
 
-    if vert_angle_right_forearm is not None and \
-            vert_angle_right_arm is not None:
+    # Reconocimiento de gestos
+    if vert_angle_right_arm is not None and \
+            vert_angle_right_forearm is not None:
+
+        # Obtenemos ángulos entre 0 y 180
+        if vert_angle_right_arm > 180:
+            vert_angle_right_arm = 360 - vert_angle_right_arm
+        elif vert_angle_right_arm < -180:
+            vert_angle_right_arm = 360 + vert_angle_right_arm
+
+        if vert_angle_right_forearm > 180:
+            vert_angle_right_forearm = 360 - vert_angle_right_forearm
+        elif vert_angle_right_forearm < -180:
+            vert_angle_right_forearm = 360 + vert_angle_right_forearm
+
         # Brazo derecho "estirado" (en torno a 90 grados respecto al eje vertical)
-        if 60 < abs(vert_angle_right_arm) < 120:
+        abs_vert_angle_right_arm = abs(vert_angle_right_arm)
+        abs_vert_angle_right_forearm = abs(vert_angle_right_forearm)
+
+        if 60 < abs_vert_angle_right_arm < 120:
             # Antebrazo derecho estirado (90 grados...): Seguimiento del brazo
-            if 70 < abs(vert_angle_right_forearm) < 100:
+            if 70 < abs_vert_angle_right_forearm < 100:
                 pose = checkTimestamp("RIGHT_ARM_FOLLOW", 0.5)
 
             # Antebrazo derecho hacia arriba (0 grados): Cancela el movimiento del ArUco
@@ -153,7 +169,7 @@ def checkPose():
                 pose = checkTimestamp("RIGHT_ARM_STOP", 0.5)
 
             # Antebrazo derecho hacia abajo (-180 grados): Reanuda el movimiento del ArUco
-            elif -195 < vert_angle_right_forearm < -165:
+            elif abs_vert_angle_right_forearm > 165:
                 pose = checkTimestamp("RIGHT_ARM_RESUME", 0.5)
 
     if l_wrist is not None:

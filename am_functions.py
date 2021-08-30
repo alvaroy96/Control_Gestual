@@ -100,7 +100,8 @@ def followArUco(orgFrame, processFrame):
         if var.calcMovements:
             newTime = time.time()
 
-            if (newTime - lastTime) > 1.5:
+            if (newTime - lastTime) > 1.5 or var.stopArUco \
+                    or var.followObject != "ArUco":
                 var.l_r_vel_aruco = 0
                 var.u_d_vel_aruco = 0
                 var.f_b_vel_aruco = 0
@@ -119,7 +120,7 @@ def controlPID_ArUco(x_arucoCenter, y_arucoCenter, rvec, tvec):
     # Cálculo del error en la velocidad
     xDif = x_arucoCenter - var.x_camCenter  # Error en píxeles
     yDif = y_arucoCenter - var.y_camCenter  # Error en píxeles
-    forwardDif = tvec[0][0][2] - 0.2  # TODO: ¿Qué significa este valor?
+    forwardDif = tvec[0][0][2] - 0.3  # TODO: ¿Qué significa este valor?
 
     xError = xDif / (var.width / 2) * var.am_speed  # Error de velocidad. Eje X
     yError = yDif / (var.height / 2) * var.am_speed  # Error de velocidad. Eje Y

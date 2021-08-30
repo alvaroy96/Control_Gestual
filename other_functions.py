@@ -75,7 +75,7 @@ def wifiConnect(name, ssid, password):
                     print("Fichero de red modificado")
                 os.system(command)
         else:
-            if not os.path.isfile("networks/"):
+            if not os.path.isdir("networks/"):
                 os.mkdir("networks/")
 
             config = """<?xml version=\"1.0\"?>

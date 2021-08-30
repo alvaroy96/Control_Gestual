@@ -91,9 +91,8 @@ if __name__ == '__main__':
     wifiConnect(ssid, ssid, password)
 
     # Conexión con el dron
-    connected = False
-    while connected is False:
-        connected = var.tello.connect()
+    while not var.tello.get_current_state():
+        var.tello.connect()
 
     # Ejecución del programa principal
     mainProgram()
