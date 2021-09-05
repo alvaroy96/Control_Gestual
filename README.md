@@ -1,17 +1,8 @@
-<style>
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-</style>
-
 # Control de un dron basado en visión y programación gestual
 
 Este repositorio contiene el código implementado para la realización del Trabajo de Fin de Máster presentado por Álvaro Ayuso Martínez, alumno del Máster en Ciencia de Datos e Ingeniería de Computadores de la Universidad de Granada.
 
-<img src="/img/3a_persona_4.jpg" height="300" class="center">
+<img src="/img/3a_persona_4.jpg" height="300" align="center">
 
 ## Resumen
 
@@ -182,10 +173,10 @@ Las funciones **wifiConnect** y **wifiDisconnect** se definen para la automatiza
 
 A continuación se muestran algunas imágenes en las que se puede apreciar el catálogo de gestos actualmente definido. Dichas imágenes han sido extraídas de uno de los vídeos de prueba sobre la aplicación implementada para la elaboración de la documentación y la presentación de este Trabajo de Fin de Máster.
 
-<img src="/img/prueba_completa_0.jpg" height="200" class="center">
-<img src="/img/prueba_completa_1.jpg" height="200" class="center">
-<img src="/img/prueba_completa_2.jpg" height="200" class="center">
-<img src="/img/prueba_completa_3.jpg" height="200" class="center">
-<img src="/img/prueba_completa_4.jpg" height="200" class="center">
-<img src="/img/prueba_completa_5.jpg" height="200" class="center">
-<img src="/img/prueba_completa_6.jpg" height="200" class="center">
+<img src="/img/prueba_completa_0.jpg" height="200" align="left">
+<img src="/img/prueba_completa_1.jpg" height="200" align="right">
+<img src="/img/prueba_completa_2.jpg" height="200" align="left">
+<img src="/img/prueba_completa_3.jpg" height="200" align="right">
+<img src="/img/prueba_completa_4.jpg" height="200" align="left">
+<img src="/img/prueba_completa_5.jpg" height="200" align="right">
+<img src="/img/prueba_completa_6.jpg" height="200" align="center">
