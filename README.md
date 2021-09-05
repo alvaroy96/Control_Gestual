@@ -2,6 +2,8 @@
 
 Este repositorio contiene el código implementado para la realización del Trabajo de Fin de Máster presentado por Álvaro Ayuso Martínez, alumno del Máster en Ciencia de Datos e Ingeniería de Computadores de la Universidad de Granada.
 
+<img src="/img/3a_persona_4.jpg" height="100">
+
 ## Resumen
 
 Este trabajo se enfoca en integrar el reconocimiento de gestos como mecanismo de control de drones y tiene su origen en el estudio de las ventajas de su aplicación en operaciones militares. Una de las principales ventajas de usar dicho mecanismo de control es la capacidad de dotar al dron de cierta autonomía respecto a su operador (unidad militar de infantería), lo que permitiría al soldado centrar en él su atención únicamente en momentos puntuales, como la puesta a punto de la unidad y el lanzamiento de órdenes mediante gestos, aprovechando el tiempo restante para realizar otras tareas. Esto es especialmente interesante en situaciones de riesgo donde la vida del soldado puede correr peligro. 
