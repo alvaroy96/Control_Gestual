@@ -176,18 +176,18 @@ Las funciones **wifiConnect** y **wifiDisconnect** se definen para la automatiza
 A continuación se muestran algunas imágenes en las que se puede apreciar el catálogo de gestos actualmente definido. Dichas imágenes han sido extraídas de uno de los vídeos de prueba sobre la aplicación implementada para la elaboración de la documentación y la presentación de este Trabajo de Fin de Máster.
 
 <p align="center">
-	<img src="/img/prueba_completa_0.jpg" height="200" align="left">
-	<img src="/img/prueba_completa_1.jpg" height="200" align="right">
+	<img src="/img/prueba_completa_0.jpg" height="200">
+	<img src="/img/prueba_completa_1.jpg" height="200">
 </p>
 
 <p align="center">
-	<img src="/img/prueba_completa_2.jpg" height="200" align="left">
-	<img src="/img/prueba_completa_3.jpg" height="200" align="right">
+	<img src="/img/prueba_completa_2.jpg" height="200">
+	<img src="/img/prueba_completa_3.jpg" height="200">
 </p>
 
 <p align="center">
-	<img src="/img/prueba_completa_4.jpg" height="200" align="left">
-	<img src="/img/prueba_completa_5.jpg" height="200" align="right">
+	<img src="/img/prueba_completa_4.jpg" height="200">
+	<img src="/img/prueba_completa_5.jpg" height="200">
 </p>
 
 <p align="center">
