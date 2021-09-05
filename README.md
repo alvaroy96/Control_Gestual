@@ -131,3 +131,35 @@ La función initializePID sirve para inicializar los valores de las variables gl
 
 ### op_functions.py
 
+En este fichero se definen otras variables locales para la definición textual de los keypoints devueltos por OpenPose, la definición de objetos utilizados por OpenPose, un timestamp (par de valores tiempo y pose) utilizado para fijar un tiempo mínimo para el reconocimiento de gestos y el control PID para el cálculo de las velocidades de este bloque.
+
+La función get_body_kp permite obtener las coordenadas de un keypoint pasándole como parámetro el nombre asociado a dicho keypoint, definido previamente en las variables locales.
+
+Las funciones distance y vertical_angle calculan la distancia entre dos puntos y el ángulo de un segmento respecto el eje vertical, respectivamente.
+
+La función checkTimestamp funciona de la siguiente forma:
+* Si la pose del timestamp no se corresponde con la pose detectada en el frame actual, se actualiza el timestamp con el tiempo actual y la pose actual.
+* Si la pose del timestamp se corresponde con la pose detectada en el frame actual y la diferencia entre el tiempo actual y el tiempo en el que se detectó por primera vez la pose es mayor al tiempo de reconocimiento mínimo de gestos, se da por reconocido el gesto, devolviendo el valor de la pose.
+* Nótese que la pose y el tiempo de detección son parámetros de entrada.
+
+La función checkPose hace uso de la función checkTimestamp para definir el catálogo de gestos reconocibles a partir de los keypoints devueltos por OpenPose. El gesto reconocido, devuelto por la función, servirá para la ejecución de la orden asociada a dicho gesto.
+
+La función initializeOP se encarga de importar e inicializar la librería OpenPose previamente compilada, así como configurar los parámetros de uso de la misma. 
+
+La función followGestures hace uso de la librería OpenPose previamente importada para la detección de poses, y posteriormente define todo el conjunto de acciones posibles, cada una de ellas asociada a una de las poses definidas en la función checkPose. En este punto se usa el valor devuelto por la función checkPose para comprobar la acción a ejecutar y posteriormente realizar su lanzamiento. Esta función también dibuja los resultados de OpenPose y la ejecución de las acciones sobre el frame de entrada.
+
+La función controlPID_OP incluye toda la implementación del control PID. Las velocidades calculadas por dicho control PID se ven limitadas superiormente por el valor de la variable global op_speed, para evitar velocidades mayores a las deseadas para el control gestual.
+
+La función initializePID sirve para inicializar los valores de las variables globales del control PID de este bloque, y se llama en el código main.py antes del bucle de procesamiento de los frames como parte de toda la inicialización del código.
+
+### other_functions.py
+
+En este fichero se definen funciones de diversa utilidad y que no se pueden clasificar en ninguno de los otros ficheros.
+
+La función videoCapture se encarga de abrir un fichero de vídeo para posteriormente almacenar el frame actual, representado por la variable captureFrame. Dicha función se llama mediante la creación de un nuevo hilo al pulsar la tecla R, asociada a la grabación en el controlador por teclado. Cuando se vuelve a pulsar R, la variable recording se desactiva y así el hilo dedicado a la grabación de vídeo finaliza su ejecución.
+
+La función movementSender se encarga de lanzar una orden de movimiento cada 100 ms, además de gestionar los tiempos para el cálculo de velocidades y así optimizar el rendimiento de la aplicación. Esta función es imprescindible para el seguimiento automático y el control gestual, que no proveen de otro mecanismo para el envío de órdenes.
+
+La función flyAction se definió para gestionar el despegue y el aterrizaje en un hilo independiente del hilo de ejecución principal, puesto que las llamadas a los comandos de DJITelloPy utilizados son bloqueantes. También se actualizan los valores de las variables takingoff y landing, que son de utilidad en otros lugares del código de la aplicación.
+
+Las funciones wifiConnect y wifiDisconnect se definen para la automatización de la conexión del sistema al punto de acceso habilitado por el dron. La primera parte de la función wifiConnect se dedica a la comprobación de que la configuración actual se corresponde con los valores SSID y password introducidos en el fichero main.py. En caso contrario, puede crear o modificar el fichero de configuración. Posteriormente, cuando la configuración es correcta, se realiza la conexión automática al punto de acceso haciendo uso de las herramientas netsh (para conectarse al punto de acceso) y ping (para comprobar que efectivamente hay conexión con el dron. En caso contrario, sigue intentándolo).
