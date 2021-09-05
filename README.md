@@ -179,17 +179,14 @@ A continuación se muestran algunas imágenes en las que se puede apreciar el ca
 	<img src="/img/prueba_completa_0.jpg" height="200">
 	<img src="/img/prueba_completa_1.jpg" height="200">
 </p>
-
 <p align="center">
 	<img src="/img/prueba_completa_2.jpg" height="200">
 	<img src="/img/prueba_completa_3.jpg" height="200">
 </p>
-
 <p align="center">
 	<img src="/img/prueba_completa_4.jpg" height="200">
 	<img src="/img/prueba_completa_5.jpg" height="200">
 </p>
-
 <p align="center">
 	<img src="/img/prueba_completa_6.jpg" height="200">
 </p>
